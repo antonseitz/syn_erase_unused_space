@@ -9,15 +9,31 @@ if [ "$key" !=  "REALLY" ];then
 exit
 fi
 echo "creting small file... "
+if [ -f zerofill.small.file ]; then
+echo "alredy present!"
+else
 dd if=/dev/zero of=zerofill.small.file bs=1024 count=1024000 status=progress
+fi
 
 echo " fill disk without limit untill it is full"
 for (( x=11; x+=1 ; x>0)); do 
-dd if=/dev/zero of=zerofill.big.fill.$x bs=4096k status=progress count=100
-if [ $? -neq 0 ]; then 
-continue;
-fi
+if [ -f zerofill.big.fill.$x ] ;then 
+echo "zerofill.big.fill.$x already exits; skipping"
+continue
+else
 
+echo "create zerofill.big.fill.$x.."
+dd if=/dev/zero of=zerofill.big.fill.$x bs=512 status=progress count=100000000
+LASTCODE=$?
+echo $LASTCODE
+if [ $LASTCODE -gt 0 ]; then 
+echo "DISK FULL: exit loop"
+break;
+
+else
+echo "..created! "
+fi
+fi
 done
 sync
 
@@ -26,9 +42,9 @@ echo " delete small file, to free space so user can work."
 rm zerofill.small.file
 sync
 
-echo "delete big file.."
+echo "delete last big file.."
 
-rm zerofill.big.fill
+rm zerofill.big.fill.$x
 sync
 
-
+echo "COMPLETED!"
