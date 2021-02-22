@@ -1,20 +1,27 @@
-key=read -p " REALLY START DISK FILLING ? (type REALLY to confirm"
-if [ key !=  "REALLY" ];
+echo "##############################################"
+echo
+echo
+echo "DEACTIVATE BTRFS SNAPSHOTs for this folder!"
+echo "otherwise the system could get unstable and hang"
+echo
+read -p " REALLY START DISK FILLING ? (type REALLY to confirm) " key
+if [ "$key" !=  "REALLY" ];then
 exit
 fi
-# create small file 
+echo "creting small file... "
 dd if=/dev/zero of=zerofill.small.file bs=1024 count=1024000 status=progress
 
-# fill disk without limit untill it is full
+echo " fill disk without limit untill it is full"
 dd if=/dev/zero of=zerofill.big.fill bs=4096k status=progress
 
 sync
 
-# HDD is now  100% full !
-# delete small file, to free space so user can work.
+ehco " HDD is now  100% full !"
+echo " delete small file, to free space so user can work."
 rm zerofill.small.file
 sync
-# delete big file
+
+echo "delete big file.."
 
 rm zerofill.big.fill
 sync
