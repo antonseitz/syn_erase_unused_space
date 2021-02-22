@@ -1,20 +1,18 @@
 
-# Kleinere Datei erstellen
+# create small file 
 dd if=/dev/zero of=zerofill.small.file bs=1024 count=1024000 status=progress
 
-# Allen restlichen unused space überschreiben:
+# fill disk without limit untill it is full
 dd if=/dev/zero of=zerofill.big.fill bs=4096k status=progress
 
 sync
 
-# Jetzt ist HDD zu 100% voll!
-# kleines File löschen, damit User schnell weiterarbeiten können
+# HDD is now  100% full !
+# delete small file, to free space so user can work.
 rm zerofill.small.file
 sync
-# Großes File löschen
-#shred -z -n 1 zero.file sync
-# eigentlich nicht notwendig, oder? Ist doch nur mit Nullen gefüllt...
-# ...und löschen
+# delete big file
+
 rm zerofill.big.fill
 sync
 
