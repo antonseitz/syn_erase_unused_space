@@ -1,4 +1,7 @@
-
+key=read -p " REALLY START DISK FILLING ? (type REALLY to confirm"
+if [ key !=  "REALLY" ];
+exit
+fi
 # create small file 
 dd if=/dev/zero of=zerofill.small.file bs=1024 count=1024000 status=progress
 
