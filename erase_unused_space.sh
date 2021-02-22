@@ -31,4 +31,7 @@ echo "delete big file.."
 rm zerofill.big.fill
 sync
 
-
+echo "##############################################"
+echo
+echo
+echo "NOW ACTIVATE BTRFS SNAPSHOTs AGAIN for this folder!"
