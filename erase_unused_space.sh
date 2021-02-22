@@ -12,11 +12,16 @@ echo "creting small file... "
 dd if=/dev/zero of=zerofill.small.file bs=1024 count=1024000 status=progress
 
 echo " fill disk without limit untill it is full"
-dd if=/dev/zero of=zerofill.big.fill bs=4096k status=progress
+for (( x=11; x+=1 ; x>0)); do 
+dd if=/dev/zero of=zerofill.big.fill.$x bs=4096k status=progress count=100
+if [ $? -neq 0 ]; then 
+continue;
+fi
 
+done
 sync
 
-ehco " HDD is now  100% full !"
+echo " HDD is now  100% full !"
 echo " delete small file, to free space so user can work."
 rm zerofill.small.file
 sync
