@@ -1,7 +1,10 @@
+echo $1
 if ["$1" == "--maxspeed" ];then
 	BS=4096
+	echo "max"
 else
 	BS=512
+	echo "throttled speed"
 fi
 echo "##############################################"
 echo
