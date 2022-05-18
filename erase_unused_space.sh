@@ -12,7 +12,7 @@ fi
 
 read -p " GO WIth maximum dd speed ? (type max to do so ) " speed
 if [ "$speed" ==  "max" ];then
-	BS=4096
+	BS=8192
 	echo "Ok, go for max speed"
 else
 	BS=512
