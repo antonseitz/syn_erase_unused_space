@@ -15,7 +15,7 @@ if [ "$speed" ==  "max" ];then
 	BS=8192
 	echo "Ok, go for max speed"
 else
-	BS=512
+	BS=256
 	echo "Default: throttled speed"
 fi
 
