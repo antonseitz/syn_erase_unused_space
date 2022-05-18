@@ -12,7 +12,7 @@ echo "creting small file... "
 if [ -f zerofill.small.file ]; then
 echo "alredy present!"
 else
-dd if=/dev/zero of=zerofill.small.file bs=1024 count=1024000 status=progress
+dd if=/dev/zero of=zerofill.small.file bs=1024 count=2024000 status=progress
 fi
 
 echo " fill disk without limit untill it is full"
