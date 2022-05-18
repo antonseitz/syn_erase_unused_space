@@ -28,7 +28,7 @@ continue
 else
 
 echo "create zerofill.big.fill.$x.."
-dd if=/dev/zero of=zerofill.big.fill.$x bs=512 status=progress count=100000000
+dd if=/dev/zero of=zerofill.big.fill.$x bs=$BS status=progress count=100000000
 LASTCODE=$?
 echo $LASTCODE
 if [ $LASTCODE -gt 0 ]; then 
