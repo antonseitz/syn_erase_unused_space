@@ -1,5 +1,5 @@
 echo $1
-if ["$1" == "--maxspeed" ];then
+if [ "$1" == "--maxspeed" ];then
 	BS=4096
 	echo "max"
 else
