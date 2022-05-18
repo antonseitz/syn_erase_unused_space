@@ -1,11 +1,3 @@
-echo $1
-if [ "$1" == "--maxspeed" ];then
-	BS=4096
-	echo "Ok, go for max speed"
-else
-	BS=512
-	echo "Default: throttled speed"
-fi
 echo "##############################################"
 echo
 echo
@@ -16,6 +8,18 @@ read -p " REALLY START DISK FILLING ? (type REALLY to confirm) " key
 if [ "$key" !=  "REALLY" ];then
 exit
 fi
+
+
+read -p " GO WIth maximum dd speed ? (type max to do so ) " speed
+if [ "$speed" ==  "max" ];then
+	BS=4096
+	echo "Ok, go for max speed"
+else
+	BS=512
+	echo "Default: throttled speed"
+fi
+
+
 echo "creting small file... "
 if [ -f zerofill.small.file ]; then
 echo "alredy present!"
