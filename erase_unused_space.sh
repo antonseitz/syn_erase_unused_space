@@ -25,9 +25,11 @@ if [ "$2" != "--max" ] && [ "$2" != "--throttle" ]; then
 else
 	if [ "$2" == "--max" ];then
 		BS=8192
+		echo "OK, go fro max speed!"
 	fi
 	if [ "$2" == "--throttle" ]; then
 		BS=256
+		echo "OK, throttle write speed"
 	fi
 fi
 
